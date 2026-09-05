@@ -1,0 +1,2 @@
+# No third-party runtime packages are required.
+# The demo and tests use the Python 3.11+ standard library.

@@ -1,0 +1,14 @@
+{
+  "baseline_version": "approved-v1",
+  "candidate_version": "candidate-v2",
+  "baseline_pass_rate": 1.0,
+  "candidate_pass_rate": 1.0,
+  "baseline_estimated_tokens": 2100,
+  "candidate_estimated_tokens": 1450,
+  "token_reduction_pct": 30.9523809524,
+  "decision": "PROMOTE",
+  "human_review": {
+    "required": true,
+    "status": "sample-only"
+  }
+}

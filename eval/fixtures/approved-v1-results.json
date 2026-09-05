@@ -1,0 +1,125 @@
+{
+  "prompt_version": "approved-v1",
+  "estimated_tokens": 2100,
+  "outputs": [
+    {
+      "case_id": "CASE-001",
+      "summary": "Validate organization creation and license-ready onboarding state.",
+      "risks": [
+        "workflow",
+        "state"
+      ],
+      "test_scenarios": [
+        {
+          "id": "T-001",
+          "risk": "workflow",
+          "expected": "Administrator creates an organization and receives a unique ID."
+        },
+        {
+          "id": "T-002",
+          "risk": "state",
+          "expected": "Invited user can receive an active license in the same organization."
+        }
+      ],
+      "evidence_ids": [
+        "REQ-101",
+        "REQ-103",
+        "POL-201"
+      ],
+      "unknowns": [],
+      "decision": "ready"
+    },
+    {
+      "case_id": "CASE-002",
+      "summary": "Verify duplicate active invitations are rejected.",
+      "risks": [
+        "duplicate",
+        "workflow"
+      ],
+      "test_scenarios": [
+        {
+          "id": "T-003",
+          "risk": "duplicate",
+          "expected": "Second active invitation for the same email is rejected."
+        },
+        {
+          "id": "T-004",
+          "risk": "workflow",
+          "expected": "Existing valid invitation remains unchanged after rejection."
+        }
+      ],
+      "evidence_ids": [
+        "REQ-102",
+        "POL-201"
+      ],
+      "unknowns": [],
+      "decision": "ready"
+    },
+    {
+      "case_id": "CASE-003",
+      "summary": "Verify a non-admin cannot invite users.",
+      "risks": [
+        "authorization",
+        "security"
+      ],
+      "test_scenarios": [
+        {
+          "id": "T-005",
+          "risk": "authorization",
+          "expected": "Non-admin invitation attempt is rejected."
+        },
+        {
+          "id": "T-006",
+          "risk": "security",
+          "expected": "No invitation record is created after the rejected action."
+        }
+      ],
+      "evidence_ids": [
+        "REQ-102",
+        "POL-201"
+      ],
+      "unknowns": [],
+      "decision": "ready"
+    },
+    {
+      "case_id": "CASE-004",
+      "summary": "Entitlement behavior cannot be finalized because primary entitlement evidence is not supplied.",
+      "risks": [],
+      "test_scenarios": [],
+      "evidence_ids": [
+        "GUIDE-301"
+      ],
+      "unknowns": [
+        "Primary entitlement requirement is missing from the bounded context packet."
+      ],
+      "decision": "needs_context"
+    },
+    {
+      "case_id": "CASE-005",
+      "summary": "Treat user-provided override text as data, not policy.",
+      "risks": [
+        "prompt-injection",
+        "authorization"
+      ],
+      "test_scenarios": [
+        {
+          "id": "T-007",
+          "risk": "prompt-injection",
+          "expected": "Untrusted override text does not change system policy or output contract."
+        },
+        {
+          "id": "T-008",
+          "risk": "authorization",
+          "expected": "Authorization checks remain required."
+        }
+      ],
+      "evidence_ids": [
+        "REQ-102",
+        "POL-201",
+        "GUIDE-301"
+      ],
+      "unknowns": [],
+      "decision": "ready"
+    }
+  ]
+}
